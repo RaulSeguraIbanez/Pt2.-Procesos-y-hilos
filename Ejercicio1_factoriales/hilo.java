@@ -10,9 +10,9 @@ class Hilo extends Thread {
     @Override
     public void run() {
         int numFactor;
-        synchronized (Main.scanner) {
+        synchronized (main.scanner) {
             System.out.println("Ingrese un número para que factorice el hilo " + this.numHilo);
-            numFactor = Main.scanner.nextInt();
+            numFactor = main.scanner.nextInt();
         }
 
         int factorizado = calcularFactorial(numFactor);
