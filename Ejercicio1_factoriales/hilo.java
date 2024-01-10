@@ -1,19 +1,21 @@
 package Ejercicio1_factoriales;
 
-class hilo extends Thread {
-
+class Hilo extends Thread {
     private int numHilo;
-    private int numFactor;
 
-    public hilo(int posicion) {
+    public Hilo(int posicion) {
         this.numHilo = posicion;
     }
 
     @Override
     public void run() {
-        System.out.println("Ingrese un número para que factorice el hilo " + this.numHilo);
-        this.numFactor = main.s1.nextInt();
-        int factorizado = calcularFactorial(this.numFactor);
+        int numFactor;
+        synchronized (Main.scanner) {
+            System.out.println("Ingrese un número para que factorice el hilo " + this.numHilo);
+            numFactor = Main.scanner.nextInt();
+        }
+
+        int factorizado = calcularFactorial(numFactor);
         System.out.println("El número factorizado por el hilo " + this.numHilo + " es: " + factorizado);
     }
 
