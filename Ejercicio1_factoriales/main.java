@@ -2,7 +2,7 @@ package Ejercicio1_factoriales;
 
 import java.util.Scanner;
 
-public class Main {
+public class main {
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
