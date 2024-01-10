@@ -5,7 +5,7 @@ class hilo extends Thread {
     private int numHilo;
     private int numFactor;
 
-    public Hilo(int posicion) {
+    public hilo(int posicion) {
         this.numHilo = posicion;
     }
 
