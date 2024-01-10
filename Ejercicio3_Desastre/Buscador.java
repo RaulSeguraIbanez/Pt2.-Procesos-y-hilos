@@ -6,15 +6,23 @@ public class Buscador {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Ingrese el tamaño del vector: ");
-        int tamanoVector = scanner.nextInt();
-
-        System.out.print("Ingrese el valor a buscar: ");
-        int valorBuscado = scanner.nextInt();
-
-        System.out.print("Ingrese el número de hilos: ");
-        int numHilos = scanner.nextInt();
-
+        System.out.print("Ingrese tamaño, valor y número de hilos bajo el formato de '$buscador (tamaño) (valor) (hilos): ");
+        
+        String buscacion = scanner.nextLine();
+        int tamanoVector = 0;
+        int valorBuscado = 0;
+        int numHilos = 0;
+        
+        for(int x = 0; x < buscacion.length(); x++) {
+        	
+        	if(buscacion.charAt(x) == ' ') {
+        		
+        	} else if{
+        		
+        	}
+        
+        }
+        
         if (tamanoVector <= 0 || numHilos <= 0) {
             System.out.println("El tamaño del vector y el número de hilos deben ser mayores que cero.");
             System.exit(1);
