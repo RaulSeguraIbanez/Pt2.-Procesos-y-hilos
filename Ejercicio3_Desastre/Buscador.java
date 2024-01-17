@@ -13,7 +13,7 @@ public class Buscador {
         int valorBuscado = 0;
         int numHilos = 0;
         String vectorEscrito ="";
-        String tamanoEscrito = "";
+        String valorEscrito = "";
         String numHiloEscrito = "";
         int cambio = 0;
         
@@ -29,7 +29,7 @@ public class Buscador {
                 	vectorEscrito = vectorEscrito + buscacion.charAt(x);
                 	break;
                 case 2:
-                	tamanoEscrito = tamanoEscrito + buscacion.charAt(x);
+                	valorEscrito = valorEscrito + buscacion.charAt(x);
                 	break;	
                 case 3:
                 	numHiloEscrito = numHiloEscrito + buscacion.charAt(x);
@@ -38,7 +38,7 @@ public class Buscador {
         
         }
         	tamanoVector = Integer.parseInt(vectorEscrito);
-        	valorBuscado = Integer.parseInt(tamanoEscrito);
+        	valorBuscado = Integer.parseInt(valorEscrito);
         	numHilos = Integer.parseInt(numHiloEscrito);
         
         if (tamanoVector <= 0 || numHilos <= 0) {
