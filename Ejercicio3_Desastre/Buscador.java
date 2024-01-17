@@ -6,22 +6,40 @@ public class Buscador {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Ingrese tamaño, valor y número de hilos bajo el formato de '$buscador (tamaño) (valor) (hilos): ");
+        System.out.print("Ingrese tamaño, valor y número de hilos bajo el formato de '$buscador (tamaño) (valor a bsucar) (numero de hilos): ");
         
         String buscacion = scanner.nextLine();
         int tamanoVector = 0;
         int valorBuscado = 0;
         int numHilos = 0;
+        String vectorEscrito ="";
+        String tamanoEscrito = "";
+        String numHiloEscrito = "";
+        int cambio = 0;
         
         for(int x = 0; x < buscacion.length(); x++) {
         	
         	if(buscacion.charAt(x) == ' ') {
+        		cambio++;
         		
-        	} else if{
+        	} else if(buscacion.charAt(x) != ' ' || Character.isDigit(buscacion.charAt(x))){
         		
+        		switch (cambio) {
+                case 1:
+                	vectorEscrito = vectorEscrito + buscacion.charAt(x);
+                	break;
+                case 2:
+                	tamanoEscrito = tamanoEscrito + buscacion.charAt(x);
+                	break;	
+                case 3:
+                	numHiloEscrito = numHiloEscrito + buscacion.charAt(x);
+                	break;	
         	}
         
         }
+        	tamanoVector = Integer.parseInt(vectorEscrito);
+        	valorBuscado = Integer.parseInt(tamanoEscrito);
+        	numHilos = Integer.parseInt(numHiloEscrito);
         
         if (tamanoVector <= 0 || numHilos <= 0) {
             System.out.println("El tamaño del vector y el número de hilos deben ser mayores que cero.");
@@ -65,7 +83,7 @@ public class Buscador {
             System.out.println("El valor " + valorBuscado + " se encontró en la posición " + resultado.getPosicion());
         } else {
             System.out.println("El valor " + valorBuscado + " no se encontró en el vector.");
-        }
+        }}
     }
 
     private static int[] generarVectorAleatorio(int tamano) {
