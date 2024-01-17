@@ -5,41 +5,47 @@ import java.util.Scanner;
 public class Buscador {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingrese tamaño, valor y número de hilos bajo el formato de '$buscador (tamaño) (valor a bsucar) (numero de hilos): ");
-        
-        String buscacion = scanner.nextLine();
         int tamanoVector = 0;
         int valorBuscado = 0;
         int numHilos = 0;
-        String vectorEscrito ="";
+        String vectorEscrito = "";
         String valorEscrito = "";
         String numHiloEscrito = "";
         int cambio = 0;
         
-        for(int x = 0; x < buscacion.length(); x++) {
-        	
-        	if(buscacion.charAt(x) == ' ') {
-        		cambio++;
-        		
-        	} else if(buscacion.charAt(x) != ' ' || Character.isDigit(buscacion.charAt(x))){
-        		
-        		switch (cambio) {
-                case 1:
-                	vectorEscrito = vectorEscrito + buscacion.charAt(x);
-                	break;
-                case 2:
-                	valorEscrito = valorEscrito + buscacion.charAt(x);
-                	break;	
-                case 3:
-                	numHiloEscrito = numHiloEscrito + buscacion.charAt(x);
-                	break;	
-        	}
-        
+        System.out.print("Ingrese tamaño, valor y número de hilos bajo el formato de '$buscador (tamaño) (valor a buscar) (numero de hilos): ");
+
+        String buscacion = scanner.nextLine();
+
+        // Verificar si la cadena comienza con '$buscador'
+        if (!buscacion.startsWith("$buscador ")) {
+            System.out.println("Formato no válido. Asegúrate de comenzar con '$buscador ' y seguir con los parámetros.");
+            System.exit(1);
         }
-        	tamanoVector = Integer.parseInt(vectorEscrito);
-        	valorBuscado = Integer.parseInt(valorEscrito);
-        	numHilos = Integer.parseInt(numHiloEscrito);
+
+        // Eliminar "$buscador " al principio de la cadena
+        buscacion = buscacion.substring("$buscador ".length());
+
+        // Dividir la cadena en partes usando el espacio como delimitador
+        String[] parametros = buscacion.split(" ");
+
+        // Verificar que haya al menos tres parámetros
+        if (parametros.length < 3) {
+            System.out.println("Formato no válido. Deben proporcionarse al menos tres parámetros.");
+            System.exit(1);
+        }
+
+        // Obtener los valores de los parámetros
+        try {
+             tamanoVector = Integer.parseInt(parametros[0]);
+             valorBuscado = Integer.parseInt(parametros[1]);
+             numHilos = Integer.parseInt(parametros[2]);
+
+            // Resto del código usando tamanoVector, valorBuscado y numHilos...
+        } catch (NumberFormatException e) {
+            System.out.println("Formato no válido. Asegúrate de que los parámetros sean números enteros válidos.");
+            System.exit(1);
+        }
         
         if (tamanoVector <= 0 || numHilos <= 0) {
             System.out.println("El tamaño del vector y el número de hilos deben ser mayores que cero.");
@@ -83,7 +89,7 @@ public class Buscador {
             System.out.println("El valor " + valorBuscado + " se encontró en la posición " + resultado.getPosicion());
         } else {
             System.out.println("El valor " + valorBuscado + " no se encontró en el vector.");
-        }}
+        }
     }
 
     private static int[] generarVectorAleatorio(int tamano) {
